@@ -66,7 +66,6 @@ table {
 /* MIN-WIDTH OF THE PAGE SHOULD NOT GO BELOW 400PX */
 body{
     min-width: 400px;
-    max-width: 450px;
     margin: 0 auto;
     box-sizing: border-box;
     background-color: var(--white);
@@ -77,7 +76,7 @@ body{
 
 h1, h2{
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 h1{
@@ -86,23 +85,151 @@ h1{
 
 h2{
     color: var(--white);
-    margin: 1rem;
+    margin: 1rem 0.5rem;
 }
 
 h3{
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: var(--white);
-    margin: 1rem;
+    margin: 1rem 0.5rem;
 }
 
-/* TO DO: ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
+/* Header Styles */
+header {
+    background-color: var(--black);
+    padding: 2rem 1rem;
+}
+
+/* ADD FLOATING SVG LOGO BEFORE THE H1 */
+h1::before {
+    content: "";
+    float:left;
+    left:-.5rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    background: url('images/vanguard-logo.svg') no-repeat center/contain;
+}
+
+/* NAV Styles */
+nav {
+  background-color: var(--black);
+  position: relative;
+}
+nav ul {
+  width: 100%;
+  margin:0;
+  padding:0;
+  list-style: none;
+  overflow: hidden;
+  text-align: center;
+  max-height: 0;
+}
+nav h2 {
+  visibility: hidden;
+  height:1px;
+}
+nav li a {
+  display:block;
+  font-family:var(--font);
+  font-size:1.5rem;
+  padding:1rem;
+  text-transform:uppercase;
+  font-weight:bold;
+  text-decoration:none;
+  color: var(--blue);
+  transition: background-color .3s ease-in;
+}
+nav a:hover, nav input:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+nav label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1.5rem;
+    user-select: none;
+    position: absolute;
+    top: -4rem;
+    right: 0.5rem;
+}
+
+/* BUILDS THE MIDDLE LILNE OF THE HAMBURGER */
+label span {
+    background-color: white;
+    display: block;
+    height: .25rem;
+    position: relative;
+    transition: background-color .3s ease-out;
+    width: 2rem;
+}
+/* BUILDS THE TOP AND BOTTOM LINES OF THE HAMBURGER*/
+label span:before, label span:after {
+    background: white;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+label span:before {
+    top: .75rem;
+}
+label span:after {
+    top: -.75rem;
+}
+input[type=checkbox] {
+  display:none;
+}
+/* ADDS HEIGHT THE NAV WHEN IT'S DROPPED DOWN */
+input:checked ~ ul {
+    max-height: 500px;
+}
+/* MAKES THE MIDDLE LINE OF THE HAMBURGER DISAPPEAR */
+input:checked ~ label span {
+    background: transparent;
+}
+/* ROTATES THE TOP LINE OF THE HAMBURGER INTO ONE SIDE OF THE X */
+input:checked ~ label span:before {
+    transform: rotate(-45deg);
+}
+/* ROTATES THE BOTTOM LINE OF THE HAMBURGER INTO ONE SIDE OF THE X */
+input:checked ~ label span:after {
+    transform: rotate(45deg);
+}
+/* LOCATION OF THE HAMBURGER */
+input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
+    top: 0;
+}
+@media screen and (min-width: 600px){
+  nav ul {
+    overflow: visible;
+    position: absolute;
+    top: 1.5rem;
+    left:.5rem;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+  }
+  nav li a {
+    display:inline-block;
+}
+  label span, input {
+    display:none;
+  }
+}
+
+/* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+main > section{
+    margin: 0 auto;
+    padding: 1rem 0;
+}
 /* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
 #innovation{
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
@@ -115,29 +242,35 @@ h3{
     color: var(--white);
 }
 
-#innovation > a{
-    display: block;
+#innovation a{
+    display: inline-block;
     text-decoration: none;
     text-align: center;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--white);
     background-color: var(--blue);
-    padding: 0.75rem 1rem;
+    padding: 0.75rem;
     border-radius: 0.5rem;
+    margin: 1rem auto;
+}
+
+#innovation a:hover{
+    background-color: var(--white);
+    color: var(--blue);
 }
 
 /* Expertise Section */
-#expertise > h2{
+#expertise h2{
     color: var(--black);
 }
 
 /* Offers Section */
-#offers > h2{
+#offers h2{
     color: var(--black);
 }
 
-#offers > section{
+.offers{
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
@@ -151,22 +284,81 @@ h3{
 #results{
     background-color: var(--blue);
     color: var(--white);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+table{
+    margin: 1rem auto;
+    text-align: center;
+    width: 100%;
+}
+
+thead th{
+    background-color: var(--black);
+    font-weight: bold;
+    padding: 1rem;
+    border: 1px solid var(--charcoal);
+}
+
+tbody td{
+    padding: 1rem;
+    border: 1px solid var(--charcoal);
+}
+
+tbody tr{
+    background-color: var(--black);
+}
+
+tbody tr:nth-child(even){
+    background-color: var(--charcoal);
 }
 
 /* Contact Section */
 #contact{
     background: var(--black);
     color: var(--white);
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-/* ADD FLOATING SVG LOGO BEFORE THE H1 */
-h1::before {
-    content: "";
-    position: absolute;
-    left:-.5rem;
-    width: 3.75rem;
-    height: 3.75rem;
-    background: url('images/vanguard-logo.svg') no-repeat center/contain;
+form{
+    margin: 1rem auto;
+}
+
+input, label, textarea{
+    box-sizing: border-box;
+}
+
+input, textarea{
+    border: 2px solid var(--blue);
+    border-radius: 0;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 1rem;
+    width: 100%;
+}
+
+input[type="submit"]{
+    margin: 2rem 0;
+    padding: 0.75rem;
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: bold;
+    border-radius: 0.5rem;
+}
+
+/* Footer */
+footer{
+    background-color: var(--black);
+    text-align: center;
+    color: var(--white);
+    padding: 1rem;
+}
+
+footer > a{
+    color: var(--blue);
 }
 
 /* THIS ONE IS DONE FOR YOU */
@@ -182,13 +374,13 @@ h1::before {
     padding: 1rem;
     position: relative;
 }
-/* ADD ON TRANSITION ON HEIGHT */
+/* TO DO: ADD ON TRANSITION ON HEIGHT */
 .bar {
     width: 50px;
     background: var(--charcoal);
     border-radius: 10px;
     position: relative;
-    transition: ;
+    transition: height;
     height: 0;
 }
 /* THIS ONE IS DONE FOR YOU */
@@ -210,27 +402,67 @@ h1::before {
         height: var(--height);
     }
 }
-/* ADD ANIMATION ON stepUp for 1s ease-in-out forwards */
+/* TO DO: ADD ANIMATION ON stepUp for 1s ease-in-out forwards */
 .bar {
     animation: stepUp 1s ease-in-out forwards;
 }
 
 
 /* MEDIA QUERIES (MEDIUM) */ 
-
-    #results {
+@media screen and (min-width: 800px){
+    #offers > .container {
+        display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1rem auto;
     }
-    .results-container {
-        flex-direction: row;
-        justify-content: space-between;
+
+    #offers > .container > h2{
+        grid-column: -1/1;
     }
-    .results-table {
+
+    .offers{
+        margin: 0;
+    }
+
+    #results > .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    #result > .container h2, p{
+        grid-column: -1/1;
+    }
+
+    .profits table {
         width: 50%;
     }
     .bar-chart {
         width: 50%;
     }
-
+}
 
 /* MEDIA QUERIES (LARGE) */
+@media screen and (min-width: 1024px){
+    #offers > .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 1rem;
+        margin: 1rem auto;
+    }
+
+    #offers > .container > h2{
+        grid-column: -1/1;
+    }
+
+    form{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    input, textarea{
+        margin-bottom: 0;
+    }
+}
