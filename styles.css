@@ -97,18 +97,19 @@ h3{
 
 h2, h3{
     animation: appear 1s ease-in-out;
+    position: relative;
 
 }
 
 @keyframes appear {
     0%{
         opacity: 0;
-        transform: translate(0, -10px);
+        top: -10px;
     } 
      
     100%{
         opacity: 1;
-        transform: translate(0, 0);
+        top:0;
     }
 }
 
@@ -134,7 +135,7 @@ h1::before {
 
 @keyframes bounce{
     0% {top: 0;}
-    50%{top: 5px;}
+    50%{top: 7px;}
     100% {top: 0;}
 }
 
@@ -143,6 +144,7 @@ nav {
   background-color: var(--black);
   position: relative;
 }
+
 nav ul {
   width: 100%;
   margin:0;
@@ -152,10 +154,12 @@ nav ul {
   text-align: center;
   max-height: 0;
 }
+
 nav h2 {
   visibility: hidden;
   height:1px;
 }
+
 nav li a {
   display:block;
   font-family:var(--font);
@@ -167,10 +171,12 @@ nav li a {
   color: var(--blue);
   transition: background-color .3s ease-in;
 }
+
 nav a:hover, nav input:hover {
     background-color: var(--blue);
     color: var(--black);
 }
+
 nav label {
     cursor: pointer;
     display: inline-block;
@@ -290,6 +296,7 @@ main > section{
     border-radius: 0.5rem;
     margin: 1rem auto;
     animation: appear 1s ease-in-out;
+    position: relative;
 }
 
 #innovation a:hover{
