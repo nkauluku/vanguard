@@ -396,6 +396,8 @@ input[type="submit"]{
     color: var(--white);
     font-weight: bold;
     border-radius: 0.5rem;
+    animation: appear 1s ease-in-out;
+    position: relative;
 }
 
 input[type="submit"]:hover{
@@ -430,7 +432,7 @@ footer a{
     padding: 1rem;
     position: relative;
 }
-/* TO DO: ADD ON TRANSITION ON HEIGHT */
+/* ADD ON TRANSITION ON HEIGHT */
 .bar {
     width: 50px;
     background: var(--charcoal);
@@ -439,6 +441,7 @@ footer a{
     transition: height 1s ease-in;
     height: 0;
 }
+
 /* THIS ONE IS DONE FOR YOU */
 .bar::after {
     content: attr(data-year);
@@ -450,6 +453,7 @@ footer a{
     font-weight: bold;
     color: var(--white);
 }
+
 /* TO DO: ADD ANIMATION ON stepUp for 1s ease-in-out forwards */
 .bar {
     animation: stepUp 1s ease-in-out forwards;
