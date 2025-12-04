@@ -116,7 +116,7 @@ h2, h3{
 /* Header Styles */
 header {
     background-color: var(--black);
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1rem;
     box-shadow: 2px 5px 5px var(--blue);
     position: relative;
     z-index: 2;
@@ -245,7 +245,7 @@ input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps)
     nav ul {
         overflow: visible;
         position: relative;
-        top: -3rem;
+        top: -3.5rem;
         left:.5rem;
         display: grid;
         grid-template-columns:1fr 1fr 1fr;
