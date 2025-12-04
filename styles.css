@@ -99,6 +99,9 @@ h3{
 header {
     background-color: var(--black);
     padding: 2rem 1rem;
+    box-shadow: 2px 5px 5px var(--blue);
+    position: relative;
+    z-index: 2;
 }
 
 /* ADD FLOATING SVG LOGO BEFORE THE H1 */
@@ -203,20 +206,29 @@ input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps)
     top: 0;
 }
 @media screen and (min-width: 600px){
-  nav ul {
-    overflow: visible;
-    position: absolute;
-    top: 1.5rem;
-    left:.5rem;
-    display: grid;
-    grid-template-columns:1fr 1fr 1fr;
-  }
-  nav li a {
-    display:inline-block;
-}
-  label span, input {
-    display:none;
-  }
+    header .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul {
+        overflow: visible;
+        position: relative;
+        top: -3rem;
+        left:.5rem;
+        display: grid;
+        grid-template-columns:1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    nav li a {
+        display:inline-block;
+    }
+
+    label span, input {
+        display:none;
+    }
 }
 
 /* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
@@ -357,7 +369,7 @@ footer{
     padding: 1rem;
 }
 
-footer > a{
+footer a{
     color: var(--blue);
 }
 
