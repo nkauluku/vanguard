@@ -126,6 +126,7 @@ header {
 h1::before {
     content: "";
     float:left;
+    left: -.5rem;
     width: 3.75rem;
     height: 3.75rem;
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
